@@ -43,9 +43,25 @@ public class Pawn {
         pieceColor = value;
     }
 
+
+    //Pawn moves        x
+    //                  x
+    //
+    //Only in front
+    //                  x
+    //                  x
     public void Move(MovementType movementType, int newX, int newY) {
-        throw new UnsupportedOperationException("Need to implement Pawn.Move()") ;
+//        throw new UnsupportedOperationException("Need to implement Pawn.Move()") ;
+        chessBoard=new ChessBoard();
+        if(this.pieceColor.equals(PieceColor.WHITE)&& chessBoard.IsLegalBoardPosition(newX,newY))
+            if(newY==yCoordinate++&&newY<=ChessBoard.MAX_BOARD_HEIGHT&&newX==xCoordinate)
+                this.setYCoordinate(newY);
+        if(this.pieceColor.equals(PieceColor.BLACK)&& chessBoard.IsLegalBoardPosition(newX,newY))
+                if(newY==yCoordinate-1&&newY>=0&&newX==xCoordinate)
+                    this.setYCoordinate(newY);
     }
+
+
 
     @Override
     public String toString() {
